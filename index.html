@@ -3,125 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Web Page</title>
+<title>AI ANIIMS</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Arial', sans-serif;
+    font-family:Arial, sans-serif;
 }
 
-/* Body background */
-body {
+body{
     min-height:100vh;
-    background: url('images/6.jpg') no-repeat center/cover;
-    background-size: cover;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     color:white;
+    background:#050816;
+    position:relative;
+}
+
+/* Animated Gradient Background */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(0,255,255,0.25), transparent 70%);
+    top:-200px;
+    left:-150px;
+    animation:moveGlow1 10s infinite alternate ease-in-out;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(255,0,150,0.2), transparent 70%);
+    bottom:-180px;
+    right:-120px;
+    animation:moveGlow2 12s infinite alternate ease-in-out;
+}
+
+/* Floating Particles */
+
+.particles span{
+    position:absolute;
+    display:block;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.6;
+    animation:float 15s linear infinite;
+}
+
+.particles span:nth-child(1){
+    left:10%;
+    animation-duration:12s;
+    top:100%;
+}
+
+.particles span:nth-child(2){
+    left:20%;
+    animation-duration:18s;
+    top:100%;
+}
+
+.particles span:nth-child(3){
+    left:35%;
+    animation-duration:10s;
+    top:100%;
+}
+
+.particles span:nth-child(4){
+    left:50%;
+    animation-duration:20s;
+    top:100%;
+}
+
+.particles span:nth-child(5){
+    left:65%;
+    animation-duration:14s;
+    top:100%;
+}
+
+.particles span:nth-child(6){
+    left:80%;
+    animation-duration:16s;
+    top:100%;
+}
+
+.particles span:nth-child(7){
+    left:90%;
+    animation-duration:11s;
+    top:100%;
 }
 
 /* Glass Container */
-.container {
+
+.container{
+    position:relative;
+    z-index:2;
     text-align:center;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-    padding:40px 30px;
-    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(18px);
+    padding:45px 35px;
+    border-radius:25px;
     width:90%;
     max-width:450px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-    animation: fadeIn 1s ease;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(-20px);}
-    to {opacity:1; transform: translateY(0);}
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.15),
+        0 0 40px rgba(255,0,150,0.15);
+    animation:fadeIn 1s ease;
 }
 
 /* Heading */
-h1 {
-    font-size:32px;
-    margin-bottom:10px;
-    color:#ffffff;
-    text-shadow: 0 0 10px #000000;
+
+h1{
+    font-size:38px;
+    margin-bottom:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    background:linear-gradient(90deg,#00ffff,#ff00aa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 /* Paragraph */
-p {
+
+p{
     font-size:16px;
-    margin-bottom:20px;
-    line-height:1.5;
-    color:#f0f0f0;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    margin-bottom:25px;
+    line-height:1.6;
+    color:#e8e8e8;
 }
 
-/* Buttons */
+/* Button */
+
 .btn{
     display:block;
     width:100%;
-    margin-top:15px;
-    padding:14px 0;
+    padding:15px 0;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
     font-size:16px;
     font-weight:600;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    text-align:center;
-    color:white;
-    background: linear-gradient(135deg, #000000, #ff4b2b);
-    box-shadow: 0 0 15px #000000, 0 0 25px #ff4b2b;
-    transition: all 0.3s ease;
-    text-decoration:none; /* remove underline if anchor */
+    letter-spacing:0.5px;
+    background:linear-gradient(135deg,#00c6ff,#ff0080);
+    transition:0.35s ease;
+    box-shadow:
+        0 0 15px rgba(0,198,255,0.5),
+        0 0 25px rgba(255,0,128,0.4);
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px #ff416c, 0 0 40px #ff4b2b;
+.btn:hover{
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:
+        0 0 25px rgba(0,198,255,0.8),
+        0 0 45px rgba(255,0,128,0.6);
 }
 
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 0 15px #ff416c, 0 0 25px #ff4b2b;
+.btn:active{
+    transform:scale(0.98);
 }
 
 /* Footer */
-footer {
+
+footer{
     position:fixed;
-    bottom:0;
+    bottom:15px;
     width:100%;
     text-align:center;
-    background: rgba(0,0,0,0.6);
-    padding:10px;
     font-size:13px;
-    color:#ddd;
+    color:rgba(255,255,255,0.7);
+    z-index:2;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes moveGlow1{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(120px,80px);
+    }
+}
+
+@keyframes moveGlow2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-100px,-70px);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) scale(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
 }
 
 /* Responsive */
+
 @media(max-width:480px){
+
     .container{
-        padding:25px 20px;
+        padding:35px 22px;
     }
-    h1{font-size:26px;}
-    p{font-size:14px;}
-    .btn{font-size:14px; padding:12px 0;}
+
+    h1{
+        font-size:30px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    .btn{
+        font-size:14px;
+        padding:13px 0;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Welcome</h1>
-    <p>Click the button to visit website</p>
+<!-- Floating Particles -->
 
-    <!-- Modern Gradient Button -->
-    <a href="warning.html" class="btn">Go to Website</a>
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- Main Container -->
+
+<div class="container">
+
+    <h1>Welcome</h1>
+
+    <p>
+        Experience the next generation futuristic AI platform.
+    </p>
+
+    <a href="warning.html" class="btn">
+        Go to Website
+    </a>
+
 </div>
 
 <footer>

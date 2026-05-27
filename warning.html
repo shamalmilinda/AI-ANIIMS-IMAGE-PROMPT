@@ -3,141 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>18+ Warning</title>
+<title>Warning Page</title>
 
 <style>
-* {
+
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Arial', sans-serif;
+    font-family:Arial, sans-serif;
 }
 
-/* Body background */
-body {
+body{
     min-height:100vh;
-    background: url('images/5.jpg') no-repeat center/cover;
-    background-size: cover;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    background:#050816;
     color:white;
+    position:relative;
 }
 
-/* Glass container */
-.container {
-    text-align:center;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(12px);
-    padding:40px 30px;
-    border-radius:20px;
+/* Animated Background */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    background:radial-gradient(circle, rgba(255,0,120,0.20), transparent 70%);
+    top:-250px;
+    left:-180px;
+    animation:glowMove1 10s infinite alternate ease-in-out;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:550px;
+    height:550px;
+    background:radial-gradient(circle, rgba(0,255,255,0.18), transparent 70%);
+    bottom:-200px;
+    right:-140px;
+    animation:glowMove2 12s infinite alternate ease-in-out;
+}
+
+/* Floating Particles */
+
+.particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+    animation:float 14s linear infinite;
+}
+
+.particles span:nth-child(1){left:10%; top:100%; animation-duration:10s;}
+.particles span:nth-child(2){left:22%; top:100%; animation-duration:16s;}
+.particles span:nth-child(3){left:38%; top:100%; animation-duration:12s;}
+.particles span:nth-child(4){left:50%; top:100%; animation-duration:18s;}
+.particles span:nth-child(5){left:66%; top:100%; animation-duration:14s;}
+.particles span:nth-child(6){left:82%; top:100%; animation-duration:11s;}
+.particles span:nth-child(7){left:92%; top:100%; animation-duration:15s;}
+
+/* Glass Container */
+
+.container{
+    position:relative;
+    z-index:2;
     width:90%;
-    max-width:450px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.7);
-    animation: fadeIn 1s ease;
+    max-width:470px;
+    padding:45px 35px;
+    text-align:center;
+    border-radius:28px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 0 20px rgba(255,0,120,0.15),
+        0 0 45px rgba(0,255,255,0.10);
+    animation:fadeIn 1s ease;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(-20px);}
-    to {opacity:1; transform: translateY(0);}
+/* Icon */
+
+.warning-icon{
+    font-size:55px;
+    margin-bottom:15px;
+    animation:pulse 2s infinite;
 }
 
-/* Heading */
-h1 {
-    font-size:32px;
+/* Headings */
+
+h1{
+    font-size:34px;
     margin-bottom:10px;
+    font-weight:700;
+    background:linear-gradient(90deg,#ff3c7d,#00ffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+h2{
+    font-size:22px;
+    margin-bottom:15px;
     color:#ffffff;
-    text-shadow:0 0 12px #000000;
 }
 
-/* Paragraph */
-p {
+/* Text */
+
+p{
     font-size:16px;
-    margin-bottom:20px;
-    line-height:1.5;
-    color:#f0f0f0;
-    text-shadow:0 0 6px rgba(0,0,0,0.5);
+    line-height:1.7;
+    color:#e6e6e6;
+    margin-bottom:25px;
 }
 
-/* Neon gradient confirm button */
-.btn {
+/* Buttons */
+
+.btn{
     display:block;
     width:100%;
-    margin-top:15px;
-    padding:14px 0;
+    padding:15px 0;
+    border-radius:50px;
+    text-decoration:none;
     font-size:16px;
     font-weight:600;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    text-align:center;
     color:white;
-    text-decoration:none;
-    background: linear-gradient(135deg,#000000,#ff4b2b);
-    box-shadow:0 0 15px #000000,0 0 25px #ff4b2b;
-    transition: all 0.3s ease;
+    margin-top:14px;
+    transition:0.35s ease;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow:0 0 25px #ff416c,0 0 40px #ff4b2b;
+/* Continue Button */
+
+.btn-primary{
+    background:linear-gradient(135deg,#ff0055,#ff7b00);
+    box-shadow:
+        0 0 15px rgba(255,0,85,0.5),
+        0 0 30px rgba(255,123,0,0.4);
 }
 
-.btn:active {
-    transform: translateY(0);
-    box-shadow:0 0 15px #ff416c,0 0 25px #ff4b2b;
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 0 25px rgba(255,0,85,0.8),
+        0 0 45px rgba(255,123,0,0.6);
 }
 
-/* Gray back button */
-.btn-back {
-    background: #000000;
-    margin-top:10px;
-    box-shadow:0 0 10px rgba(55,65,81,0.6);
+/* Back Button */
+
+.btn-back{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 15px rgba(255,255,255,0.08);
 }
 
-.btn-back:hover {
-    background:#140079;
-    transform:translateY(-3px);
+.btn-back:hover{
+    transform:translateY(-4px);
+    background:rgba(0,255,255,0.12);
+    box-shadow:0 0 25px rgba(0,255,255,0.2);
 }
 
-footer {
+/* Footer */
+
+footer{
     position:fixed;
-    bottom:0;
+    bottom:15px;
     width:100%;
     text-align:center;
-    background: rgba(0,0,0,0.6);
-    padding:10px;
     font-size:13px;
-    color:#ddd;
+    color:rgba(255,255,255,0.65);
+    z-index:2;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes glowMove1{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(120px,90px);
+    }
+}
+
+@keyframes glowMove2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-100px,-70px);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) scale(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        transform:translateY(-110vh) scale(1.4);
+        opacity:0;
+    }
 }
 
 /* Responsive */
-@media(max-width:480px) {
-    .container {
-        padding:25px 20px;
+
+@media(max-width:480px){
+
+    .container{
+        padding:35px 22px;
     }
-    h1{font-size:26px;}
-    p{font-size:14px;}
-    .btn{font-size:14px; padding:12px 0;}
+
+    h1{
+        font-size:28px;
+    }
+
+    h2{
+        font-size:19px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    .btn{
+        font-size:14px;
+        padding:13px 0;
+    }
+
+    .warning-icon{
+        font-size:48px;
+    }
 }
+
 </style>
 </head>
 
 <body>
-<div class="container">
-    <h1>⚠️ Warning ⚠️</h1>
-    <h1>Adult Content</h1>
-    <p>This section is restricted to viewers 18 years or older. Click confirm if you are 18+.</p>
 
-    <!-- Confirm Button -->
-    <a href="waiting.html" class="btn">I am 18+ and want to continue</a>
+<!-- Particles -->
 
-    <!-- Back Button -->
-    <a href="index.html" class="btn btn-back">Go Back</a>
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
-<footer>© 2026 AI ANIIMS</footer>
+<!-- Main Container -->
+
+<div class="container">
+
+    <div class="warning-icon">⚠️</div>
+
+    <h1>Warning</h1>
+
+    <h2>Restricted Section</h2>
+
+    <p>
+        This page contains restricted content.
+        Please continue only if you are allowed to access this section.
+    </p>
+
+    <!-- Continue Button -->
+
+    <a href="waiting.html" class="btn btn-primary">
+        Continue
+    </a>
+
+    <!-- Back Button -->
+
+    <a href="index.html" class="btn btn-back">
+        Go Back
+    </a>
+
+</div>
+
+<footer>
+    © 2026 AI ANIIMS
+</footer>
+
 </body>
 </html>

@@ -4,86 +4,310 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redirecting...</title>
+
 <style>
-* {
+
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Arial', sans-serif;
+    font-family:Arial, sans-serif;
 }
 
-body {
+body{
     min-height:100vh;
-    background: url('images/4.jpg') no-repeat center/cover;
-    background-size: cover;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    background:#050816;
     color:white;
+    position:relative;
 }
 
+/* Animated Background */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    background:radial-gradient(circle, rgba(0,255,255,0.18), transparent 70%);
+    top:-240px;
+    left:-180px;
+    animation:moveGlow1 10s infinite alternate ease-in-out;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:550px;
+    height:550px;
+    background:radial-gradient(circle, rgba(255,0,120,0.18), transparent 70%);
+    bottom:-200px;
+    right:-140px;
+    animation:moveGlow2 12s infinite alternate ease-in-out;
+}
+
+/* Floating Particles */
+
+.particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.6;
+    animation:float 15s linear infinite;
+}
+
+.particles span:nth-child(1){left:8%; top:100%; animation-duration:11s;}
+.particles span:nth-child(2){left:20%; top:100%; animation-duration:17s;}
+.particles span:nth-child(3){left:35%; top:100%; animation-duration:13s;}
+.particles span:nth-child(4){left:50%; top:100%; animation-duration:20s;}
+.particles span:nth-child(5){left:68%; top:100%; animation-duration:14s;}
+.particles span:nth-child(6){left:82%; top:100%; animation-duration:10s;}
+.particles span:nth-child(7){left:94%; top:100%; animation-duration:16s;}
+
 /* Glass Container */
-.container {
+
+.container{
+    position:relative;
+    z-index:2;
     text-align:center;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    padding:40px 30px;
-    border-radius:20px;
     width:90%;
-    max-width:400px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.7);
+    max-width:430px;
+    padding:45px 35px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.15),
+        0 0 45px rgba(255,0,120,0.12);
+    animation:fadeIn 1s ease;
 }
 
 /* Heading */
-h1 {
-    font-size:28px;
-    margin-bottom:20px;
-    color:#ffffff;
-    text-shadow:0 0 10px #000000;
+
+h1{
+    font-size:34px;
+    margin-bottom:25px;
+    font-weight:700;
+    background:linear-gradient(90deg,#00ffff,#ff00aa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Countdown Circle */
+
+.countdown-box{
+    width:130px;
+    height:130px;
+    margin:auto;
+    margin-bottom:25px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    background:rgba(255,255,255,0.05);
+    border:2px solid rgba(255,255,255,0.1);
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.25),
+        0 0 35px rgba(255,0,170,0.20);
+    animation:pulse 2s infinite;
 }
 
 /* Countdown Number */
-#countdown {
-    font-size:48px;
+
+#countdown{
+    font-size:55px;
     font-weight:700;
-    margin-bottom:20px;
-    color:#fff;
-    text-shadow: 0 0 15px #ff4b2b;
+    color:white;
+    text-shadow:
+        0 0 15px #00ffff,
+        0 0 30px #ff00aa;
 }
 
-/* Redirect Text */
-p {
+/* Text */
+
+p{
     font-size:16px;
-    color:#f0f0f0;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    line-height:1.7;
+    color:#e8e8e8;
 }
+
+/* Footer */
+
+footer{
+    position:fixed;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+    font-size:13px;
+    color:rgba(255,255,255,0.65);
+    z-index:2;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes moveGlow1{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(120px,90px);
+    }
+}
+
+@keyframes moveGlow2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-100px,-70px);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) scale(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* Responsive */
+
+@media(max-width:480px){
+
+    .container{
+        padding:35px 22px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    #countdown{
+        font-size:45px;
+    }
+
+    .countdown-box{
+        width:110px;
+        height:110px;
+    }
+
+    p{
+        font-size:14px;
+    }
+}
+
 </style>
 </head>
 
 <body>
-<div class="container">
-    <h1>Redirecting...</h1>
-    <div id="countdown">6</div>
-    <p>You will be redirected in <span id="seconds">10</span> seconds</p>
+
+<!-- Floating Particles -->
+
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
+<!-- Main Container -->
+
+<div class="container">
+
+    <h1>Redirecting...</h1>
+
+    <!-- Countdown Circle -->
+
+    <div class="countdown-box">
+        <div id="countdown">6</div>
+    </div>
+
+    <p>
+        You will be redirected in
+        <span id="seconds">6</span>
+        seconds
+    </p>
+
+</div>
+
+<footer>
+    © 2026 AI ANIIMS
+</footer>
+
 <script>
-// Countdown and Redirect
-let countdown = 6; // seconds
+
+/* Countdown + Redirect */
+
+let countdown = 6;
+
 const countdownEl = document.getElementById('countdown');
 const secondsEl = document.getElementById('seconds');
 
 const timer = setInterval(() => {
+
     countdown--;
+
     countdownEl.textContent = countdown;
     secondsEl.textContent = countdown;
 
     if(countdown <= 0){
+
         clearInterval(timer);
-        window.location.href = "Standard Gallery (Free view).html"; // Redirect URL
+
+        window.location.href =
+        "Standard Gallery (Free view).html";
+
     }
-}, 1000);
+
+},1000);
+
 </script>
+
 </body>
 </html>
