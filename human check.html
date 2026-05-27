@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Verification</title>
+<style>
+body{
+    font-family:'Arial', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:url('images/1.jpg') no-repeat center/cover;
+    background-size:cover;
+    color:white;
+}
+
+.container{
+    text-align:center;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    padding:40px 30px;
+    border-radius:20px;
+    width:90%;
+    max-width:400px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.7);
+}
+
+h1{
+    margin-bottom:15px;
+    color:#ffffff;
+    text-shadow:0 0 10px #000000;
+}
+
+p{
+    margin-bottom:25px;
+    color:#f0f0f0;
+    text-shadow:0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Checkbox */
+.checkbox-container {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.checkbox-container input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+
+/* Progress bar */
+.progress{
+    width:100%;
+    height:10px;
+    background: rgba(255,255,255,0.2);
+    border-radius:5px;
+    overflow:hidden;
+    margin-top:20px;
+    display:none;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background: linear-gradient(90deg,#ff416c,#ff4b2b);
+    transition: width 2s linear;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Human Verification</h1>
+    <p>Check the box to verify you are human</p>
+
+    <label class="checkbox-container">
+        <input type="checkbox" id="humanCheck">
+        I am Human
+    </label>
+
+    <div class="progress" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</div>
+
+<script>
+const checkbox = document.getElementById('humanCheck');
+const progressBar = document.getElementById('progressBar');
+const progressFill = document.getElementById('progressFill');
+
+checkbox.addEventListener('change', () => {
+    if(checkbox.checked){
+        progressBar.style.display = 'block';
+        setTimeout(() => {
+            progressFill.style.width = '100%';
+        }, 50);
+
+        setTimeout(() => {
+            alert("Verification successful!");
+            window.location.href = "waiting.html"; // Next page
+        }, 2200); // Wait for progress animation
+    }
+});
+</script>
+</body>
+</html>

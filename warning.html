@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18+ Warning</title>
+
+<style>
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Arial', sans-serif;
+}
+
+/* Body background */
+body {
+    min-height:100vh;
+    background: url('images/5.jpg') no-repeat center/cover;
+    background-size: cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+}
+
+/* Glass container */
+.container {
+    text-align:center;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+    padding:40px 30px;
+    border-radius:20px;
+    width:90%;
+    max-width:450px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.7);
+    animation: fadeIn 1s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+/* Heading */
+h1 {
+    font-size:32px;
+    margin-bottom:10px;
+    color:#ffffff;
+    text-shadow:0 0 12px #000000;
+}
+
+/* Paragraph */
+p {
+    font-size:16px;
+    margin-bottom:20px;
+    line-height:1.5;
+    color:#f0f0f0;
+    text-shadow:0 0 6px rgba(0,0,0,0.5);
+}
+
+/* Neon gradient confirm button */
+.btn {
+    display:block;
+    width:100%;
+    margin-top:15px;
+    padding:14px 0;
+    font-size:16px;
+    font-weight:600;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    text-align:center;
+    color:white;
+    text-decoration:none;
+    background: linear-gradient(135deg,#000000,#ff4b2b);
+    box-shadow:0 0 15px #000000,0 0 25px #ff4b2b;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow:0 0 25px #ff416c,0 0 40px #ff4b2b;
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow:0 0 15px #ff416c,0 0 25px #ff4b2b;
+}
+
+/* Gray back button */
+.btn-back {
+    background: #000000;
+    margin-top:10px;
+    box-shadow:0 0 10px rgba(55,65,81,0.6);
+}
+
+.btn-back:hover {
+    background:#140079;
+    transform:translateY(-3px);
+}
+
+footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    background: rgba(0,0,0,0.6);
+    padding:10px;
+    font-size:13px;
+    color:#ddd;
+}
+
+/* Responsive */
+@media(max-width:480px) {
+    .container {
+        padding:25px 20px;
+    }
+    h1{font-size:26px;}
+    p{font-size:14px;}
+    .btn{font-size:14px; padding:12px 0;}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>⚠️ Warning ⚠️</h1>
+    <h1>Adult Content</h1>
+    <p>This section is restricted to viewers 18 years or older. Click confirm if you are 18+.</p>
+
+    <!-- Confirm Button -->
+    <a href="waiting.html" class="btn">I am 18+ and want to continue</a>
+
+    <!-- Back Button -->
+    <a href="index.html" class="btn btn-back">Go Back</a>
+</div>
+
+<footer>© 2026 AI ANIIMS</footer>
+</body>
+</html>
