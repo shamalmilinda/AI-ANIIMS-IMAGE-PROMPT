@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Redirecting...</title>
 
 <style>
+
+/* =========================
+RESET
+========================= */
 
 *{
     margin:0;
@@ -14,150 +19,303 @@
     font-family:Arial, sans-serif;
 }
 
+html{
+    font-size:16px;
+    scroll-behavior:smooth;
+}
+
 body{
     min-height:100vh;
+    width:100%;
     overflow:hidden;
+
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
+
+    padding:20px;
+
     background:#050816;
     color:white;
+
     position:relative;
 }
 
-/* Animated Background */
+/* =========================
+ANIMATED BACKGROUND
+========================= */
 
 body::before{
     content:"";
     position:absolute;
-    width:650px;
-    height:650px;
-    background:radial-gradient(circle, rgba(0,255,255,0.18), transparent 70%);
-    top:-240px;
-    left:-180px;
+
+    width:60vw;
+    height:60vw;
+
+    max-width:700px;
+    max-height:700px;
+
+    min-width:250px;
+    min-height:250px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,255,255,0.18),
+        transparent 70%
+    );
+
+    top:-18%;
+    left:-12%;
+
     animation:moveGlow1 10s infinite alternate ease-in-out;
+
+    z-index:0;
 }
 
 body::after{
     content:"";
     position:absolute;
-    width:550px;
-    height:550px;
-    background:radial-gradient(circle, rgba(255,0,120,0.18), transparent 70%);
-    bottom:-200px;
-    right:-140px;
+
+    width:50vw;
+    height:50vw;
+
+    max-width:580px;
+    max-height:580px;
+
+    min-width:220px;
+    min-height:220px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,0,120,0.18),
+        transparent 70%
+    );
+
+    bottom:-15%;
+    right:-10%;
+
     animation:moveGlow2 12s infinite alternate ease-in-out;
+
+    z-index:0;
 }
 
-/* Floating Particles */
+/* =========================
+PARTICLES
+========================= */
+
+.particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:1;
+}
 
 .particles span{
     position:absolute;
+
     width:4px;
     height:4px;
+
     background:white;
+
     border-radius:50%;
+
     opacity:0.6;
+
     animation:float 15s linear infinite;
 }
 
-.particles span:nth-child(1){left:8%; top:100%; animation-duration:11s;}
-.particles span:nth-child(2){left:20%; top:100%; animation-duration:17s;}
-.particles span:nth-child(3){left:35%; top:100%; animation-duration:13s;}
-.particles span:nth-child(4){left:50%; top:100%; animation-duration:20s;}
-.particles span:nth-child(5){left:68%; top:100%; animation-duration:14s;}
-.particles span:nth-child(6){left:82%; top:100%; animation-duration:10s;}
-.particles span:nth-child(7){left:94%; top:100%; animation-duration:16s;}
+.particles span:nth-child(1){
+    left:8%;
+    top:100%;
+    animation-duration:11s;
+}
 
-/* Glass Container */
+.particles span:nth-child(2){
+    left:20%;
+    top:100%;
+    animation-duration:17s;
+}
+
+.particles span:nth-child(3){
+    left:35%;
+    top:100%;
+    animation-duration:13s;
+}
+
+.particles span:nth-child(4){
+    left:50%;
+    top:100%;
+    animation-duration:20s;
+}
+
+.particles span:nth-child(5){
+    left:68%;
+    top:100%;
+    animation-duration:14s;
+}
+
+.particles span:nth-child(6){
+    left:82%;
+    top:100%;
+    animation-duration:10s;
+}
+
+.particles span:nth-child(7){
+    left:94%;
+    top:100%;
+    animation-duration:16s;
+}
+
+/* =========================
+GLASS CONTAINER
+========================= */
 
 .container{
     position:relative;
     z-index:2;
+
     text-align:center;
-    width:90%;
-    max-width:430px;
-    padding:45px 35px;
-    border-radius:28px;
+
+    width:100%;
+    max-width:460px;
+
+    padding:
+    clamp(28px, 5vw, 50px);
+
+    border-radius:30px;
+
     background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.10);
+
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
     box-shadow:
         0 0 20px rgba(0,255,255,0.15),
         0 0 45px rgba(255,0,120,0.12);
+
     animation:fadeIn 1s ease;
 }
 
-/* Heading */
+/* =========================
+HEADING
+========================= */
 
 h1{
-    font-size:34px;
-    margin-bottom:25px;
+    font-size:clamp(2rem, 5vw, 3rem);
+
+    margin-bottom:28px;
+
     font-weight:700;
-    background:linear-gradient(90deg,#00ffff,#ff00aa);
+
+    line-height:1.1;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00ffff,
+        #ff00aa
+    );
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-/* Countdown Circle */
+/* =========================
+COUNTDOWN CIRCLE
+========================= */
 
 .countdown-box{
-    width:130px;
-    height:130px;
+    width:clamp(110px, 28vw, 145px);
+    height:clamp(110px, 28vw, 145px);
+
     margin:auto;
-    margin-bottom:25px;
+    margin-bottom:28px;
+
     border-radius:50%;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     position:relative;
+
     background:rgba(255,255,255,0.05);
-    border:2px solid rgba(255,255,255,0.1);
+
+    border:2px solid rgba(255,255,255,0.10);
+
     box-shadow:
         0 0 20px rgba(0,255,255,0.25),
         0 0 35px rgba(255,0,170,0.20);
+
     animation:pulse 2s infinite;
 }
 
 /* Countdown Number */
 
 #countdown{
-    font-size:55px;
+    font-size:clamp(2.8rem, 8vw, 4rem);
+
     font-weight:700;
+
     color:white;
+
     text-shadow:
         0 0 15px #00ffff,
         0 0 30px #ff00aa;
 }
 
-/* Text */
+/* =========================
+TEXT
+========================= */
 
 p{
-    font-size:16px;
-    line-height:1.7;
+    font-size:clamp(0.95rem, 2vw, 1.05rem);
+
+    line-height:1.8;
+
     color:#e8e8e8;
 }
 
-/* Footer */
+/* =========================
+FOOTER
+========================= */
 
 footer{
     position:fixed;
-    bottom:15px;
+
+    bottom:14px;
+    left:0;
+
     width:100%;
+
     text-align:center;
-    font-size:13px;
+
+    font-size:clamp(11px, 2vw, 13px);
+
     color:rgba(255,255,255,0.65);
+
     z-index:2;
+
+    padding:0 10px;
 }
 
-/* Animations */
+/* =========================
+ANIMATIONS
+========================= */
 
 @keyframes fadeIn{
+
     from{
         opacity:0;
         transform:translateY(-25px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
@@ -165,6 +323,7 @@ footer{
 }
 
 @keyframes pulse{
+
     0%{
         transform:scale(1);
     }
@@ -179,24 +338,29 @@ footer{
 }
 
 @keyframes moveGlow1{
+
     from{
         transform:translate(0,0);
     }
+
     to{
         transform:translate(120px,90px);
     }
 }
 
 @keyframes moveGlow2{
+
     from{
         transform:translate(0,0);
     }
+
     to{
         transform:translate(-100px,-70px);
     }
 }
 
 @keyframes float{
+
     0%{
         transform:translateY(0) scale(0);
         opacity:0;
@@ -213,29 +377,58 @@ footer{
     }
 }
 
-/* Responsive */
+/* =========================
+TABLET
+========================= */
 
-@media(max-width:480px){
+@media (max-width:768px){
+
+    body{
+        padding:18px;
+    }
 
     .container{
-        padding:35px 22px;
+        max-width:430px;
+    }
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width:480px){
+
+    body{
+        padding:15px;
     }
 
-    h1{
-        font-size:28px;
+    .container{
+        border-radius:24px;
     }
 
-    #countdown{
-        font-size:45px;
+    body::before{
+        width:85vw;
+        height:85vw;
     }
 
-    .countdown-box{
-        width:110px;
-        height:110px;
+    body::after{
+        width:75vw;
+        height:75vw;
+    }
+}
+
+/* =========================
+SMALL MOBILE
+========================= */
+
+@media (max-width:320px){
+
+    .container{
+        padding:24px 18px;
     }
 
     p{
-        font-size:14px;
+        line-height:1.6;
     }
 }
 
@@ -247,6 +440,7 @@ footer{
 <!-- Floating Particles -->
 
 <div class="particles">
+
     <span></span>
     <span></span>
     <span></span>
@@ -254,6 +448,7 @@ footer{
     <span></span>
     <span></span>
     <span></span>
+
 </div>
 
 <!-- Main Container -->
@@ -265,7 +460,9 @@ footer{
     <!-- Countdown Circle -->
 
     <div class="countdown-box">
+
         <div id="countdown">6</div>
+
     </div>
 
     <p>
@@ -282,12 +479,17 @@ footer{
 
 <script>
 
-/* Countdown + Redirect */
+/* =========================
+COUNTDOWN + REDIRECT
+========================= */
 
 let countdown = 6;
 
-const countdownEl = document.getElementById('countdown');
-const secondsEl = document.getElementById('seconds');
+const countdownEl =
+document.getElementById('countdown');
+
+const secondsEl =
+document.getElementById('seconds');
 
 const timer = setInterval(() => {
 
@@ -302,7 +504,6 @@ const timer = setInterval(() => {
 
         window.location.href =
         "Standard Gallery (Free view).html";
-
     }
 
 },1000);
