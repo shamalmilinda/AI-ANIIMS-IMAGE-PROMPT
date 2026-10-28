@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIP Access | AI ANIIMS</title>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px;
+
+    background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.65)),
+        url('images/dark-bg.jpg') center/cover fixed;
+
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND GLOW */
+body::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: #6c35ff;
+    filter: blur(150px);
+    opacity: .25;
+    animation: glowMove 7s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+/* MAIN GLASS BOX */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(179,147,255,.4);
+    border-radius: 24px;
+
+    box-shadow:
+        0 0 25px rgba(120,70,255,.2),
+        0 15px 50px rgba(0,0,0,.6);
+
+    animation: fadeIn 1s ease;
+}
+
+/* LOGO / ICON */
+.logo {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+    border-radius: 22px;
+
+    background: linear-gradient(135deg, #18004c, #8255ff);
+
+    box-shadow: 0 0 25px rgba(160,120,255,.5);
+
+    animation: float 3s ease-in-out infinite;
+}
+
+/* HEADING */
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+
+    color: #c6b0ff;
+    text-shadow: 0 0 15px #7040ff;
+}
+
+.subtitle {
+    color: #d2d2d2;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* FORM */
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #d7caff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* INPUT */
+.input-box {
+    position: relative;
+}
+
+.input-box span {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    opacity: .8;
+}
+
+input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+
+    color: white;
+    background: rgba(255,255,255,.06);
+
+    border: 1px solid rgba(179,147,255,.3);
+    border-radius: 12px;
+
+    outline: none;
+    font-size: 15px;
+
+    transition: .3s;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+input:focus {
+    border-color: #a88aff;
+
+    box-shadow:
+        0 0 12px rgba(150,100,255,.4);
+
+    background: rgba(120,70,255,.08);
+}
+
+/* CONTINUE BUTTON */
+.btn {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px;
+
+    border: none;
+    border-radius: 50px;
+
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    background: linear-gradient(135deg, #150044, #6330d9, #a477ff);
+
+    box-shadow:
+        0 0 15px rgba(100,50,255,.4),
+        0 0 30px rgba(150,100,255,.2);
+
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 20px #8d63ff,
+        0 0 40px rgba(160,120,255,.6);
+}
+
+.btn:active {
+    transform: scale(.98);
+}
+
+/* MESSAGE */
+.message {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #ffaaaa;
+    min-height: 16px;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 25px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes glowMove {
+    from {
+        transform: translate(-100px, -100px);
+    }
+    to {
+        transform: translate(100px, 100px);
+    }
+}
+
+/* MOBILE */
+@media(max-width:480px) {
+    .container {
+        padding: 30px 22px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+}
+
+
+/* ANIMATED PURPLE BACKGROUND */
+body {
+    position: relative;
+    isolation: isolate;
+    overflow-x: hidden;
+    background: #05020d;
+}
+
+/* Animated glow orbs */
+.animated-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at center, #100722 0%, #05020d 75%);
+}
+
+/* Purple glowing orbs */
+.orb {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(85px);
+    opacity: 0.55;
+    will-change: transform;
+}
+
+.orb-1 {
+    background: #762cff;
+    top: -100px;
+    left: -100px;
+    animation: orbMove1 12s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+    background: #3210aa;
+    right: -100px;
+    bottom: -100px;
+    animation: orbMove2 15s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+    background: #bd45ff;
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 40%;
+    opacity: 0.25;
+    animation: orbMove3 10s ease-in-out infinite alternate;
+}
+
+/* Floating particles */
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #d9c4ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #a875ff, 0 0 20px #8b5cff;
+    animation: particleFloat linear infinite;
+}
+
+/* Orb animations */
+@keyframes orbMove1 {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(180px, 160px) scale(1.3); }
+}
+
+@keyframes orbMove2 {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-180px, -150px) scale(1.2); }
+}
+
+@keyframes orbMove3 {
+    from { transform: translate(-80px, 30px); }
+    to   { transform: translate(100px, -80px); }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(110vh) translateX(0);
+        opacity: 0;
+    }
+    15% { opacity: 0.8; }
+    85% { opacity: 0.7; }
+    100% {
+        transform: translateY(-10vh) translateX(60px);
+        opacity: 0;
+    }
+}
+
+/* Keep the form above the background */
+.container {
+    z-index: 1;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .orb, .particle {
+        animation: none !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ANIMATED BACKGROUND -->
+<div class="animated-bg" aria-hidden="true">
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <span class="particle"
+          style="left:10%; animation-duration:12s;"></span>
+
+    <span class="particle"
+          style="left:25%; animation-duration:16s; animation-delay:-5s;"></span>
+
+    <span class="particle"
+          style="left:45%; animation-duration:13s; animation-delay:-8s;"></span>
+
+    <span class="particle"
+          style="left:65%; animation-duration:18s; animation-delay:-3s;"></span>
+
+    <span class="particle"
+          style="left:80%; animation-duration:14s; animation-delay:-7s;"></span>
+
+    <span class="particle"
+          style="left:92%; animation-duration:17s; animation-delay:-10s;"></span>
+
+</div>
+
+
+<div class="container">
+
+    <div class="logo">♛</div>
+
+    <h1>VIP ACCESS</h1>
+
+    <p class="subtitle">
+        Welcome to AI ANIIMS.<br>
+        Enter your username and VIP ID to continue.
+    </p>
+
+    <form id="vipForm">
+
+        <div class="form-group">
+            <label for="username">USERNAME</label>
+
+            <div class="input-box">
+                <span>👤</span>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                    maxlength="50"
+                    required
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="vipid">VIP ID</label>
+
+            <div class="input-box">
+                <span>🔑</span>
+
+                <input
+                    type="text"
+                    id="vipid"
+                    name="vipid"
+                    placeholder="Enter your VIP ID"
+                    maxlength="50"
+                    required
+                >
+            </div>
+        </div>
+
+        <button type="submit" class="btn">
+            CONTINUE →
+        </button>
+
+        <p class="message" id="message" aria-live="polite"></p>
+
+    </form>
+
+    <div class="footer">
+        © 2026 AI ANIIMS
+    </div>
+
+</div>
+
+<script>
+const CORRECT_VIP_ID = "075755prompt";
+const TARGET_URL = "under repiar/under repiar.html";
+
+document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const vipId = document.getElementById("vipid").value.trim();
+
+    if (username === "" || vipId === "") {
+        alert("Please enter your username and VIP ID.");
+        return;
+    }
+
+    if (vipId !== CORRECT_VIP_ID) {
+        alert("Invalid VIP ID! Access denied.");
+        return;
+    }
+
+    window.location.href = TARGET_URL;
+});
+</script>
+
+</body>
+</html>
